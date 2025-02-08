@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eidocrypt Desktop</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: black;
+            color: #00ff00;
+            text-align: center;
+            padding: 20px;
+        }
+        h2 { margin-bottom: 20px; }
+        textarea, button {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #00ff00;
+            background: black;
+            color: #00ff00;
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        button {
+            background-color: #00aa00;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background-color: #007700;
+        }
+        #output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #00ff00;
+            background-color: black;
+            border-radius: 5px;
+            word-wrap: break-word;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Eidocrypt Encryption Tool</h2>
+    <textarea id="inputMessage" placeholder="Enter your message here"></textarea>
+    <button id="encryptButton">Encrypt</button>
+    <button id="decryptButton">Decrypt</button>
+    <div id="output"></div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
