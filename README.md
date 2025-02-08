@@ -4,6 +4,10 @@
 
 This project demonstrates both desktop application development and web integration for encrypted communication workflows, providing an engaging way to deliver encrypted content (e.g., in newsletters) and allowing users to decrypt messages directly via a web interface.
 
+The App is hosted on https://www.thenexuralcodex.com/eidocrypt/
+
+There is also a desktop Version that I use to quickly encrypt and decrypt when I am writing the newsletter.
+
 ---
 
 ## 🎓 **Features**
@@ -230,7 +234,8 @@ Edit
 ```
 ---
 
-🚀 Future Improvements
+## 🚀 **Future Improvements**
+
 Cross-Platform Packaging: Create builds for Windows and Linux.
 Add Encryption Options: Let users select different encryption algorithms or keys.
 Password Protection: Introduce password-based encryption for added security.
