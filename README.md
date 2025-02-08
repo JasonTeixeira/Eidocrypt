@@ -1,83 +1,54 @@
-Eidocrypt 🔐
+# **Eidocrypt** 🔐
 
-Eidocrypt is a lightweight, cross-platform encryption and decryption tool built using Electron.js for the desktop and integrated into a Ghost.io website for seamless web-based decryption. Leveraging AES-128 ECB encryption with PKCS#7 padding, Eidocrypt offers a simple yet robust method for securing and decoding messages.
+**Eidocrypt** is a lightweight, cross-platform encryption and decryption tool built using **Electron.js** for the desktop and integrated into a **Ghost.io** website for seamless web-based decryption. Leveraging **AES-128 ECB** encryption with **PKCS#7** padding, Eidocrypt offers a simple yet robust method for securing and decoding messages.
 
 This project demonstrates both desktop application development and web integration for encrypted communication workflows, providing an engaging way to deliver encrypted content (e.g., in newsletters) and allowing users to decrypt messages directly via a web interface.
 
---
+---
 
-##🌐 Live Demo
+## 🎓 **Features**
 
-Desktop Application: Download Eidocrypt
+- **AES-128 Encryption**: Utilizes AES (Advanced Encryption Standard) with ECB mode and PKCS#7 padding.
+- **Cross-Platform Desktop App**: Built with Electron.js for Windows, macOS, and Linux.
+- **Web Integration**: Decryption tool embedded into Ghost.io for easy access via web browsers.
+- **Minimalist UI**: Terminal-inspired design with a clean, intuitive interface.
+- **Real-Time Interaction**: Immediate encryption/decryption with error handling for invalid inputs.
 
-Web Decryption Tool: Eidocrypt Web Interface
+---
 
---
+## 📁 **Project Structure**
 
-##🎓 Features
-
-AES-128 Encryption: Utilizes AES (Advanced Encryption Standard) with ECB mode and PKCS#7 padding.
-
-Cross-Platform Desktop App: Built with Electron.js for Windows, macOS, and Linux.
-
-Web Integration: Decryption tool embedded into Ghost.io for easy access via web browsers.
-
-Minimalist UI: Terminal-inspired design with a clean, intuitive interface.
-
-Real-Time Interaction: Immediate encryption/decryption with error handling for invalid inputs.
-
---
-
-##📁 Project Structure
-
-```/ eidocrypt
-  |-- main.js            # Electron main process for desktop app
-  |-- index.html         # Frontend interface for desktop app
-  |-- renderer.js        # Frontend logic (encryption/decryption)
-  |-- package.json       # Node project configuration
-  |-- node_modules/      # Installed dependencies
-  |-- web_integration/   # Ghost.io HTML, CSS, and JavaScript for web decryption
+```plaintext
+/ eidocrypt
+  ├── main.js            # Electron main process for desktop app
+  ├── index.html         # Frontend interface for desktop app
+  ├── renderer.js        # Frontend logic (encryption/decryption)
+  ├── package.json       # Node project configuration
+  ├── node_modules/      # Installed dependencies
+  └── web_integration/   # Ghost.io HTML, CSS, and JavaScript for web decryption
 ```
---
 
-##💡 How It Works
+---
+
+## 💡 **How It Works**
 
 Encryption Algorithm
 
 AES-128 ECB Mode: Advanced Encryption Standard using a 128-bit key.
-
 PKCS#7 Padding: Ensures that plaintext fits perfectly into the encryption blocks.
-
 Base64 Encoding: Encrypted messages are outputted in Base64 format for easy sharing.
 
---
+---
 
-##Workflow
-
+## 🔄 **Workflow**
 Encrypt a message on the Eidocrypt desktop app.
-
 Distribute the encrypted message (e.g., via a newsletter).
-
 Recipients visit the Ghost.io web interface and paste the encrypted message to decrypt it.
 
---
 
-##🔧 Installation
+---
 
-1. Clone the Repository
-
-git clone https://github.com/yourusername/eidocrypt.git
-cd eidocrypt
-
-2. Install Dependencies
-
-```npm install```
-
-3. Run the Desktop App
-
-```npm start```
-
-🔄 Building the Desktop App
+## 🛠️ **Building the Desktop App**
 
 To package the app for distribution:
 
@@ -89,14 +60,15 @@ npx electron-packager . EidocryptApp \
   --overwrite \
   --prune=true \
   --asar
+This will generate the packaged app inside the EidocryptApp-darwin-x64/ directory (for macOS). Adjust --platform and --arch for Windows or Linux.
 ```
 
-This will generate the packaged app inside the EidocryptApp-darwin-x64/ directory (for macOS). Adjust --platform and --arch for Windows or Linux.
+---
 
-##📄 Code Overview
+## 📄 **Code Overview**
 
 1. Electron Main Process (main.js)
-
+   
 Initializes the desktop application window.
 
 ```
@@ -123,11 +95,12 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
-
 2. User Interface (index.html)
-
 Simple terminal-inspired UI.
 
+html
+Copy
+Edit
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -145,11 +118,12 @@ Simple terminal-inspired UI.
     <script src="renderer.js"></script>
 </body>
 </html>
-
 3. Encryption/Decryption Logic (renderer.js)
-
 Implements AES encryption and decryption.
 
+javascript
+Copy
+Edit
 const CryptoJS = require('crypto-js');
 
 const secretKey = CryptoJS.enc.Utf8.parse('ThisIsASecretKey');
@@ -179,25 +153,23 @@ document.getElementById('decryptButton').addEventListener('click', () => {
     const encryptedMessage = document.getElementById('inputMessage').value.trim();
     document.getElementById('output').innerText = decryptMessage(encryptedMessage);
 });
-```
-
---
-
-##🌐 Web Integration (Ghost.io)
-
+🌐 Web Integration (Ghost.io)
 1. HTML for Ghost.io
-
 Embed this in the Ghost.io Header Code Injection:
-```
+
+html
+Copy
+Edit
 <div class="eidocrypt-container">
     <h2>Eidocrypt Decryption</h2>
     <input type="text" id="inputMessage" placeholder="Enter your encrypted code here">
     <button id="decryptButton">Decrypt</button>
     <div id="outputBox"></div>
 </div>
-
 2. CSS Styling
-
+css
+Copy
+Edit
 .eidocrypt-container {
     font-family: 'Courier New', monospace;
     background: rgba(0, 0, 0, 0.9);
@@ -208,7 +180,10 @@ Embed this in the Ghost.io Header Code Injection:
     width: 80%;
     margin: 50px auto;
 }
-.eidocrypt-container input, .eidocrypt-container button, #outputBox {
+
+.eidocrypt-container input, 
+.eidocrypt-container button, 
+#outputBox {
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #00ff00;
@@ -217,18 +192,21 @@ Embed this in the Ghost.io Header Code Injection:
     border-radius: 5px;
     width: 80%;
 }
+
 .eidocrypt-container button {
     background-color: #00aa00;
     cursor: pointer;
 }
+
 .eidocrypt-container button:hover {
     background-color: #007700;
 }
-
 3. JavaScript for Decryption
-
 Embed this in the Ghost.io Footer Code Injection:
 
+html
+Copy
+Edit
 <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
 <script>
     const secretKey = CryptoJS.enc.Utf8.parse('ThisIsASecretKey');
@@ -250,13 +228,10 @@ Embed this in the Ghost.io Footer Code Injection:
     });
 </script>
 ```
+---
 
-##🚀 Future Improvements
-
+🚀 Future Improvements
 Cross-Platform Packaging: Create builds for Windows and Linux.
-
 Add Encryption Options: Let users select different encryption algorithms or keys.
-
 Password Protection: Introduce password-based encryption for added security.
-
 Web Hosting: Convert the app to a Progressive Web App (PWA) for full web functionality.
